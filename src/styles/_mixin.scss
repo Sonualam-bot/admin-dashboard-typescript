@@ -1,6 +1,6 @@
 
 
-@mixin heading($spacing: 3px, $weight: 300, $case: uppcase){
+@mixin heading($spacing: 3px, $weight: 300, $case: uppercase){
     letter-spacing: $spacing;
     font-weight: $weight;
     text-transform: $case;
@@ -14,8 +14,8 @@
 }
 @mixin grid($col: 1fr, $gap: 1rem, $row: unset){
    display: grid;
-  grid-template-columns: $col;
-  grid-template-rows: $row;
+   grid-template-columns: $col;
+   grid-template-rows: $row;
    gap: $gap;
 }
 @mixin inputStyle($w: 100%, $p: 1rem, $bgColor: inherit, $border: none){
