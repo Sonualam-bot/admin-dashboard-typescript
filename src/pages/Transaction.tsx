@@ -2,7 +2,7 @@ import AdminSidebar from "../components/AdminSidebar";
 
 function Transaction() {
   return (
-    <div className="adminContainer">
+    <div className="admin-container">
       {/* sidebar */}
       <AdminSidebar />
       {/* main  */}

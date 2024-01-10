@@ -3,10 +3,11 @@ import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
 import userImg from "../assets/userpic.png";
+import data from "../assets/data.json";
 
 function Dashboard() {
   return (
-    <div className="adminContainer">
+    <div className="admin-container">
       {/* sidebar */}
       <AdminSidebar />
       {/* main  */}
@@ -46,6 +47,26 @@ function Dashboard() {
             color="rgb(076 0 256)"
           />
         </section>
+
+        <section className="graph-container">
+          <div className="revenue-chart">
+            <h2>Revenue & Transaction </h2>
+            {/* Graph here */}
+          </div>
+          <div className="dashboard-categories">
+            <h2>Inventory</h2>
+            <div>
+              {data.categories.map((item) => (
+                <CategoryItem
+                  key={item.heading}
+                  heading={item.heading}
+                  value={item.value}
+                  color={`hsl(${item.value * 4},${item.value}%, 50%)`}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
@@ -67,7 +88,7 @@ const WidgetItem = ({
   amount = false,
 }: WidgetItemProps) => (
   <article className="widget">
-    <div className="widgetInfo">
+    <div className="widget-info">
       <p> {heading} </p>
       <h4> {amount ? `${value}` : value} </h4>
       {percent > 0 ? (
@@ -83,7 +104,7 @@ const WidgetItem = ({
     </div>
 
     <div
-      className="widgetCircle"
+      className="widget-circle"
       style={{
         background: `conic-gradient(
           ${color} 
@@ -99,6 +120,27 @@ const WidgetItem = ({
       </span>
     </div>
   </article>
+);
+
+interface CategoryItemProps {
+  color: string;
+  value: number;
+  heading: string;
+}
+
+const CategoryItem = ({ color, value, heading }: CategoryItemProps) => (
+  <div className="category-item">
+    <h5> {heading} </h5>
+    <div>
+      <div
+        style={{
+          backgroundColor: color,
+          width: `${value}%`,
+        }}
+      ></div>
+    </div>
+    <span>{value}%</span>
+  </div>
 );
 
 export default Dashboard;
