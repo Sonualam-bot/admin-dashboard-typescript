@@ -4,6 +4,7 @@ import { FaRegBell } from "react-icons/fa";
 import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
 import userImg from "../assets/userpic.png";
 import data from "../assets/data.json";
+import { BarChart } from "../components/Charts";
 
 function Dashboard() {
   return (
@@ -52,6 +53,14 @@ function Dashboard() {
           <div className="revenue-chart">
             <h2>Revenue & Transaction </h2>
             {/* Graph here */}
+            <BarChart
+              data_1={[300, 144, 433, 655, 237, 755, 190]}
+              data_2={[200, 444, 343, 556, 778, 455, 990]}
+              title_1="Revenue"
+              title_2="Transaction"
+              bgColor_1="rgb(0,115,255)"
+              bgColor_2="rgb(53,162,235,0.8)"
+            />
           </div>
           <div className="dashboard-categories">
             <h2>Inventory</h2>
