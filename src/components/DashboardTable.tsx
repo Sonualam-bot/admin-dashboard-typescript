@@ -36,7 +36,7 @@ function Table({ data = [] }: { data: DataType[] }) {
   return TableHOC<DataType>(
     columns,
     data,
-    "transactionBox",
+    "transaction-box",
     "Top Transaction"
   )();
 }
