@@ -6,6 +6,7 @@ import { BiMaleFemale } from "react-icons/bi";
 import userImg from "../assets/userpic.png";
 import data from "../assets/data.json";
 import { BarChart, DoughnutChart } from "../components/Charts";
+import Table from "../components/DashboardTable";
 
 function Dashboard() {
   return (
@@ -92,6 +93,8 @@ function Dashboard() {
               <BiMaleFemale />{" "}
             </p>
           </div>
+
+          <Table data={data.transaction} />
         </section>
       </main>
     </div>
