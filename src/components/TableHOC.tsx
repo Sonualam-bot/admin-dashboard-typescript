@@ -20,10 +20,13 @@ function TableHOC<T extends object>(
     const options: TableOptions<T> = {
       columns,
       data,
+      initialState: {
+        pageSize: 5,
+      },
     };
 
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-      useTable(options, useSortBy);
+    const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
+      useTable(options, useSortBy, usePagination);
 
     return (
       <div className={containerClassname}>
@@ -32,7 +35,7 @@ function TableHOC<T extends object>(
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column: any) => (
+                {headerGroup.headers.map((column) => (
                   <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                     {column.render("Header")}
                     {column.isSorted && (
@@ -51,7 +54,7 @@ function TableHOC<T extends object>(
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
+            {page.map((row) => {
               prepareRow(row);
               return (
                 <tr {...row.getRowProps()}>
@@ -64,6 +67,7 @@ function TableHOC<T extends object>(
             })}
           </tbody>
         </table>
+        {}
       </div>
     );
   };
